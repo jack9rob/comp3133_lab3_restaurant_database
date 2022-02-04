@@ -33,7 +33,7 @@ app.get('/restaurants/cuisine/:cuisine', async(req, res) => {
 // idk what this means tbh
 app.get('/restaurants/:name', async(req, res) => {
     const name = req.params.name
-    const restaurants = await Restaurant.find({name: name}, {_id: 0}).sort({_id: 1})
+    const restaurants = await Restaurant.find({name: name}, {city: {$ne: 'brooklyn'}}, {_id: 0}).sort({_id: 1})
 
     try {
         res.send(restaurants)
